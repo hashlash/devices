@@ -1,0 +1,8 @@
+# Editors
+.idea
+
+# Environment variables
+.env
+
+# Miscellaneous files
+.files/
