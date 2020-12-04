@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LINE Chrome
+Comment=LINE Messaging on Chrome Extension
+Exec=/home/hashlash/Applications/chrome-linux/chrome --app="chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html"
+Terminal=false
+Type=Application
+Icon=/home/hashlash/.config/chromium/Default/Extensions/ophjlpahpchlmihnnnihgmmeilfjmjjc/2.3.9_0/res/img/line_logo_128x128_on.png
