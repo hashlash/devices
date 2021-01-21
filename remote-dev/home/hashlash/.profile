@@ -29,3 +29,6 @@ fi
 if command -v vim &> /dev/null ; then
     export EDITOR=vim
 fi
+
+# Public IP variable
+export PUBIP=$(hostname -I | cut -d' ' -f1)
