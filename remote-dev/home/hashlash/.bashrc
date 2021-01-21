@@ -101,3 +101,7 @@ source $OSH/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 alias less='less -SRc'
 alias resh='exec bash --login'
+
+mkcd() {
+    mkdir -- "$1" && cd -P -- "$1"
+}
