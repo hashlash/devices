@@ -1,0 +1,7 @@
+[core]
+        excludesfile = /home/hashlash/.gitignore_global
+        pager = less -+X
+
+[alias]
+        root = rev-parse --show-toplevel
+        exec = "!exec "
