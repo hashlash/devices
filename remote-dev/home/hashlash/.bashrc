@@ -101,6 +101,7 @@ source $OSH/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 alias less='less -SRc'
 alias resh='exec bash --login'
+alias groot='cd $(git rev-parse --show-toplevel)'
 
 mkcd() {
     mkdir -- "$1" && cd -P -- "$1"
