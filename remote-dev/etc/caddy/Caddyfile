@@ -1,0 +1,23 @@
+(cors) {
+  @origin{args.0} header Origin {args.0}
+  header @origin{args.0} Access-Control-Allow-Origin "{args.0}"
+}
+
+(cors_regexp) {
+  @origin_regexp{args.0} header_regexp Origin {args.0}
+  header @origin_regexp{args.0} Access-Control-Allow-Origin "{header.Origin}"
+}
+
+django.project.example {
+  reverse_proxy unix//run/djangoproject.sock
+}
+
+django.project.example/static/* {
+  root * /home/hashlash/djangoproject/
+  file_server
+}
+
+django.project.example/media/* {
+  root * /home/hashlash/djangoproject/
+  file_server
+}
