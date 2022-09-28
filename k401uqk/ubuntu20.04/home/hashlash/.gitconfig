@@ -1,4 +1,5 @@
 [core]
+        editor = vim
         excludesfile = /home/hashlash/.gitignore_global
         pager = less -+X
 
