@@ -1,0 +1,4 @@
+#! /bin/bash
+# TODO: do this to all of directories in /usr/local/apt-repo/
+cd /usr/local/apt-repo/discord
+apt-ftparchive packages . > Packages
