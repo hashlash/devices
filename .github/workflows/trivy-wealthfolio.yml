@@ -1,0 +1,50 @@
+name: Trivy Security Scan
+
+on:
+  schedule:
+    # Run once per month at 2:00 AM UTC on the 1st of the month
+    - cron: '0 2 1 * *'
+  # Allow manual trigger with custom image tag
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Docker image tag to scan (e.g., latest, v1.0.0, develop)'
+        required: false
+        default: 'latest'
+        type: string
+
+jobs:
+  trivy-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Determine image tag
+        id: image_tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.image_tag }}"
+          else
+            TAG="latest"
+          fi
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'wealthfolio:${{ steps.image_tag.outputs.tag }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+          category: 'trivy'
+
+      - name: Display scan results
+        run: |
+          echo "Trivy scan completed for image: wealthfolio:${{ steps.image_tag.outputs.tag }}"
+          echo "Results uploaded to GitHub Security tab."
