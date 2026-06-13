@@ -34,7 +34,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'wealthfolio:${{ steps.image_tag.outputs.tag }}'
+          image-ref: 'docker.io/wealthfolio/wealthfolio:${{ steps.image_tag.outputs.tag }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
 
